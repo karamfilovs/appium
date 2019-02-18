@@ -15,10 +15,8 @@ public class HomePage extends BasePage {
      * Retrieves text from the ho
      * @return
      */
-    public String getHomePageText() {
-        String text = Client.driver.findElement(By.className("android.widget.ImageView")).getText();
-        System.out.println(text);
-        return text;
+    public void loaded() {
+        Client.driver.findElement(By.className("android.widget.TextView"));
     }
 
 

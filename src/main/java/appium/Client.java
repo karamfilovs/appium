@@ -13,12 +13,15 @@ public class Client {
     private static String appId = "com.frontm.frontm";
     private static String appActivity = "com.frontm.frontm.MainActivity";
     private static String deviceName = "device";
-    private static String deviceId = "7bcd9a4f0504";
+    private static String deviceId = "emulator-5554";
 
     public static AndroidDriver driver;
 
     public static void startAppiumClient() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("resetKeyboard", true);
+        capabilities.setCapability("autoGrantPermissions", "true");
+        capabilities.setCapability("unicodeKeyboard", true);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appId);
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, appActivity);

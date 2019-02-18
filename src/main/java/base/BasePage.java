@@ -9,10 +9,13 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
 public abstract class BasePage {
+    private final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
     private AppiumDriver driver;
 
     public BasePage(AppiumDriver driver) {
@@ -21,7 +24,7 @@ public abstract class BasePage {
     }
 
     public void swipe(Direction direction, Duration duration) {
-        System.out.println("Swiping");
+        LOGGER.info("Swiping:" + direction);
         Dimension size = Client.driver.manage().window().getSize();
 
         int startX = size.width / 2;
@@ -31,17 +34,17 @@ public abstract class BasePage {
 
 
         if (direction == Direction.LEFT) {
-            startX = (int) (size.width * 0.8);
-            endX = (int) (size.width * 0.2);
+            startX = (int) (size.width * 0.9);
+            endX = (int) (size.width * 0.1);
         } else if (direction == Direction.RIGHT) {
-            startX = (int) (size.width * 0.2);
-            endX = (int) (size.width * 0.8);
+            startX = (int) (size.width * 0.1);
+            endX = (int) (size.width * 0.9);
         } else if (direction == Direction.UP) {
-            startY = (int) (size.height * 0.8);
-            endY = (int) (size.height * 0.2);
+            startY = (int) (size.height * 0.9);
+            endY = (int) (size.height * 0.1);
         } else {
-            startY = (int) (size.height * 0.2);
-            endY = (int) (size.height * 0.8);
+            startY = (int) (size.height * 0.1);
+            endY = (int) (size.height * 0.9);
         }
 
         new TouchAction(Client.driver)
@@ -51,4 +54,13 @@ public abstract class BasePage {
                 .release()
                 .perform();
     }
+
+
+    public void swipe(Direction direction, Duration duration, int times){
+        for (int i = 0; i<times; i++){
+            swipe(direction, duration);
+        }
+    }
+
+
 }

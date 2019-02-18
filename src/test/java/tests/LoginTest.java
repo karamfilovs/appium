@@ -1,43 +1,40 @@
 package tests;
 
 import appium.Client;
-import base.MobileTest;
 import enums.Direction;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 import pages.DashboardPage;
 import pages.HomePage;
 import pages.LoginPage;
 
 import java.time.Duration;
 
-public class LoginTest extends MobileTest {
+public class LoginTest extends BaseTest {
+
 
     @Test
-    public void canNavigateToLoginScreen() {
-        // Verify home page loaded
-        HomePage home = new HomePage(Client.driver);
-        Assert.assertTrue(home.getHomePageText().contains(""));
-
-        // Swipe 6 times
-        for (int i = 0; i < 6; i++) {
-            home.swipe(Direction.LEFT, Duration.ofMillis(1000));
-        }
-
-        // Verify login page
-        LoginPage loginPage = new LoginPage(Client.driver);
-        Assert.assertTrue(loginPage.getLoginScreenText().contains("Welcome!"));
-
-        // Login
-        loginPage.enterEmail("karamfilovs@gmail.com");
-        loginPage.enterPassword("Safe2019$");
-        loginPage.clickLoginButton();
-        DashboardPage dashboardPage = new DashboardPage(Client.driver);
-        dashboardPage.clickPragmatic();
+    public void canLoginSuccessfully() {
+        app.homePage().loaded(); // Verify home page loaded
+        app.homePage().swipe(Direction.LEFT, Duration.ofMillis(1000), 5); // Swipe 5 times
+        Assert.assertTrue(app.loginPage().getLoginScreenText().contains("Welcome!")); // Verify login text
+        app.loginPage().enterEmail("karamfilovs@gmail.com"); //Enters email
+        app.loginPage().enterPassword("Safe2019$"); //Enters password
+        app.loginPage().clickLoginButton(); // Clicks Login button
     }
 
-    public void canRegisterNewAccount(){
+    @Test
+    public void canLogoutFromTheAssistant(){
+        app.homePage().loaded(); // Verifies homepage image is visible
+        app.homePage().swipe(Direction.LEFT, Duration.ofMillis(1000), 5); // Performs 5 swipes
+        app.loginPage().login("karamfilovs@gmail.com", "Safe2019$"); // Performs full login
+        app.dashboardPage().openFrontMAssistantChannel(); // Clicks on FrontM Assistant channel
+        app.dashboardPage().selectCommand("sure"); // Selects Yes sure
+        app.dashboardPage().selectCommand("Logout"); // Selects Logout
+    }
+
+    @Test
+    public void canSendMessageInTestingChannel(){
 
     }
 }
