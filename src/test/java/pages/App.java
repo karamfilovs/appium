@@ -6,6 +6,7 @@ public class App {
     private HomePage homePage;
     private LoginPage loginPage;
     private DashboardPage dashboardPage;
+    private FrontMAssistantPage frontMAssistantPage;
 
 
     //LAZY INSTANTIATING FOR PAGE OBJECTS
@@ -33,6 +34,15 @@ public class App {
             return dashboardPage;
         } else {
             return dashboardPage;
+        }
+    }
+
+    public FrontMAssistantPage frontMAssistantPage() {
+        if (frontMAssistantPage == null) {
+            frontMAssistantPage = new FrontMAssistantPage(Client.driver);
+            return frontMAssistantPage;
+        } else {
+            return frontMAssistantPage;
         }
     }
 }

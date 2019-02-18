@@ -20,7 +20,7 @@ public class Client {
     public static void startAppiumClient() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("resetKeyboard", true);
-        capabilities.setCapability("autoGrantPermissions", "true");
+        capabilities.setCapability("autoGrantPermissions", true);
         capabilities.setCapability("unicodeKeyboard", true);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appId);

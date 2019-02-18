@@ -26,21 +26,27 @@ public class DashboardPage extends BasePage {
         element.click();
     }
 
+    public String getFrontMChannelTitle() {
+        WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[@text='FrontM Assistant']");
+        return element.getText();
+    }
+
     public void logout() {
         LOGGER.info("Clicking Testing channel");
         WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[@text='Logout']");
         element.click();
     }
 
-    public void selectCommand(String command) {
-        LOGGER.info("Selecting command:" + command);
-        WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[contains(text(),'" + command + "')]");
+
+    public void clickChannelsIcon() {
+        LOGGER.info("Clicking on Channels");
+        WebElement element = Client.driver.findElementByXPath("//android.view.ViewGroup[@content-desc='channelsMenu']");
         element.click();
     }
 
-    public void returnBackToDashboardPage() {
-        LOGGER.info("Clicking Testing channel");
-        WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[@text='.']");
+    public void returnToHome(){
+        LOGGER.info("Clicking on Home");
+        WebElement element = Client.driver.findElementByXPath("//android.view.ViewGroup[@content-desc='homeMain']");
         element.click();
     }
 }
