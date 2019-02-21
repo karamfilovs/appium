@@ -22,6 +22,7 @@ public class Client {
         capabilities.setCapability("resetKeyboard", true);
         capabilities.setCapability("autoGrantPermissions", true);
         capabilities.setCapability("unicodeKeyboard", true);
+        capabilities.setCapability("profile.password_manager_enabled", false);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appId);
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, appActivity);
@@ -30,7 +31,7 @@ public class Client {
         capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_PACKAGE, appActivity);
         capabilities.setCapability(MobileCapabilityType.UDID, deviceId);
         driver = new AndroidDriver<>(Server.service.getUrl(), capabilities);
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     public static void stopAppiumClient() {

@@ -1,12 +1,9 @@
 package tests;
 
-import appium.Client;
 import enums.Direction;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import pages.DashboardPage;
-import pages.HomePage;
-import pages.LoginPage;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
@@ -14,15 +11,18 @@ public class LoginTest extends BaseTest {
 
 
     @Test
+    @Tag("smoke")
+    @DisplayName("PC-13: Can login and logout")
     public void canLoginSuccessfully() {
         app.loginPage().enterEmail("sanders8411@gmail.com"); //Enters email
         app.loginPage().enterPassword("Safe2019$"); //Enters password
         app.loginPage().clickLoginButton(); // Clicks Login button
         app.homePage().loaded();
         app.homePage().clickHamburgerIcon();
+        app.homePage().logout();
     }
 
-    @Test
+
     public void canLogoutFromTheAssistant(){
         app.homePage().loaded(); // Verifies homepage image is visible
         app.homePage().swipe(Direction.LEFT, Duration.ofMillis(1000), 5); // Performs 5 swipes
@@ -32,7 +32,7 @@ public class LoginTest extends BaseTest {
         app.frontMAssistantPage().selectCommand("Logout"); // Selects Logout
     }
 
-    @Test
+
     public void canSendMessageInTestingChannel(){
         app.homePage().loaded(); // Verifies homepage image is visible
         app.homePage().swipe(Direction.LEFT, Duration.ofMillis(1000), 5); // Performs 5 swipes
@@ -46,7 +46,7 @@ public class LoginTest extends BaseTest {
     }
 
 
-    @Test
+
     public void canNavigateToTestChannelAndReturnBack(){
         app.homePage().loaded(); // Verifies homepage image is visible
         app.homePage().swipe(Direction.LEFT, Duration.ofMillis(1000), 5); // Performs 5 swipes
@@ -55,14 +55,12 @@ public class LoginTest extends BaseTest {
         app.frontMAssistantPage().clickReturnIcon();
     }
 
-    @Test
     public void canNavigateToFrontMAssistantChannelAndReturnBack(){
         app.homePage().loaded(); // Verifies homepage image is visible
         app.homePage().swipe(Direction.LEFT, Duration.ofMillis(1000), 5); // Performs 5 swipes
         app.loginPage().login("karamfilovs@gmail.com", "Safe2019$"); // Performs full login
         app.dashboardPage().openFrontMAssistantChannel();
         app.frontMAssistantPage().clickReturnIcon();
-        Assert.assertEquals("FrontM Assitant", app.dashboardPage().getFrontMChannelTitle());
     }
 
     @Test
@@ -72,6 +70,5 @@ public class LoginTest extends BaseTest {
         app.loginPage().login("karamfilovs@gmail.com", "Safe2019$"); // Performs full login
         app.dashboardPage().clickChannelsIcon();
         app.dashboardPage().returnToHome();
-        Assert.assertEquals("FrontM Assitant", app.dashboardPage().getFrontMChannelTitle());
     }
 }

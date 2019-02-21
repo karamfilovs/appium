@@ -16,14 +16,21 @@ public class HomePage extends BasePage {
      * @return
      */
     public void loaded() {
-        WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[@content-desc='com.talkonlinepanel.android:string/drawer_open']");
+        WebElement element = Client.driver.findElementByXPath("//android.widget.ImageButton[@content-desc='com.talkonlinepanel.android:string/drawer_open']");
     }
 
     public void clickHamburgerIcon() {
         System.out.println("Clicking Hamburger icon");
-        WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[@content-desc='com.talkonlinepanel.android:string/drawer_open']");
+        WebElement element = Client.driver.findElementByXPath("//android.widget.ImageButton[@content-desc='com.talkonlinepanel.android:string/drawer_open']");
         element.click();
     }
+
+
+    public void logout() {
+        System.out.println("Clicking Logout");
+        Client.driver.findElementByXPath("//android.widget.CheckedTextView[@text='Logout']").click();
+    }
+
 
 
 }
