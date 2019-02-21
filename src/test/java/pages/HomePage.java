@@ -16,7 +16,13 @@ public class HomePage extends BasePage {
      * @return
      */
     public void loaded() {
-        Client.driver.findElement(By.className("android.widget.TextView"));
+        WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[@content-desc='com.talkonlinepanel.android:string/drawer_open']");
+    }
+
+    public void clickHamburgerIcon() {
+        System.out.println("Clicking Hamburger icon");
+        WebElement element = Client.driver.findElementByXPath("//android.widget.TextView[@content-desc='com.talkonlinepanel.android:string/drawer_open']");
+        element.click();
     }
 
 

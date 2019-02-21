@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 public class Client {
 
     // Please replace Name and ID
-    private static String appId = "com.frontm.frontm";
-    private static String appActivity = "com.frontm.frontm.MainActivity";
+    private static String appId = "com.talkonlinepanel.android";
+    private static String appActivity = "com.talkonlinepanel.android.ui.activities.LoginActivity";
     private static String deviceName = "device";
     private static String deviceId = "emulator-5554";
 

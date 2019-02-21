@@ -22,7 +22,7 @@ public class LoginPage extends BasePage {
 
     public void enterEmail(String email) {
         LOGGER.info("Entering email:" + email);
-        WebElement element = Client.driver.findElementByXPath("//android.widget.EditText[@text='email@example.com']");
+        WebElement element = Client.driver.findElementByXPath("//android.widget.EditText[@text='Email']");
         element.clear();
         element.sendKeys(email);
         Client.driver.pressKeyCode(AndroidKeyCode.ENTER);
@@ -30,7 +30,7 @@ public class LoginPage extends BasePage {
 
     public void enterPassword(String password) {
         LOGGER.info("Entering password:" + password);
-        WebElement element = Client.driver.findElementByXPath("//android.widget.EditText[@text='password']");
+        WebElement element = Client.driver.findElementByXPath("//android.widget.EditText[@text='Password']");
         element.clear();
         element.sendKeys(password);
         Client.driver.pressKeyCode(AndroidKeyCode.ENTER);
@@ -38,7 +38,12 @@ public class LoginPage extends BasePage {
 
     public void clickLoginButton() {
         LOGGER.info("Clicking Log in button");
-        Client.driver.findElementByXPath("//android.widget.TextView[@text='Log in']").click();
+        Client.driver.findElementByXPath("//android.widget.Button[@text='Login']").click();
+    }
+
+    public void clickRegisterButton() {
+        LOGGER.info("Clicking Register button");
+        Client.driver.findElementByXPath("//android.widget.Button[@text='Register']").click();
     }
 
     public void clickSignUp() {

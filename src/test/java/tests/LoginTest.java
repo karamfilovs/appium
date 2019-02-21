@@ -15,12 +15,11 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void canLoginSuccessfully() {
-        app.homePage().loaded(); // Verify home page loaded
-        app.homePage().swipe(Direction.LEFT, Duration.ofMillis(1000), 5); // Swipe 5 times
-        Assert.assertTrue(app.loginPage().getLoginScreenText().contains("Welcome!")); // Verify login text
-        app.loginPage().enterEmail("karamfilovs@gmail.com"); //Enters email
+        app.loginPage().enterEmail("sanders8411@gmail.com"); //Enters email
         app.loginPage().enterPassword("Safe2019$"); //Enters password
         app.loginPage().clickLoginButton(); // Clicks Login button
+        app.homePage().loaded();
+        app.homePage().clickHamburgerIcon();
     }
 
     @Test
