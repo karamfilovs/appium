@@ -37,7 +37,7 @@ public class LoginPage extends BasePage {
     }
 
     public void clickLoginButton() {
-        LOGGER.info("Clicking Log in button");
+        LOGGER.info("Clicking Login button");
         Client.driver.findElementByXPath("//android.widget.Button[@text='Login']").click();
     }
 
@@ -51,7 +51,7 @@ public class LoginPage extends BasePage {
     }
 
     public void clickSignUp() {
-        System.out.println("Clicking Sign up");
+        LOGGER.info("Clicking Sign up");
         Client.driver.findElementByXPath("//android.widget.TextView[@text='You don’t have an account? Sign up I']").click();
     }
 

@@ -3,16 +3,20 @@ package pages;
 import appium.Client;
 import base.BasePage;
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HomePage extends BasePage {
+    private final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
+
     public HomePage(AppiumDriver driver) {
         super(driver);
     }
 
     /**
      * Retrieves text from the ho
+     *
      * @return
      */
     public void loaded() {
@@ -20,23 +24,21 @@ public class HomePage extends BasePage {
     }
 
     public void clickHamburgerIcon() {
-        System.out.println("Clicking Hamburger icon");
+        LOGGER.info("Clicking Hamburger icon");
         WebElement element = Client.driver.findElementByXPath("//android.widget.ImageButton[@content-desc='com.talkonlinepanel.android:string/drawer_open']");
         element.click();
     }
 
 
     public void logout() {
-        System.out.println("Clicking Logout");
+        LOGGER.info("Clicking Logout");
         Client.driver.findElementByXPath("//android.widget.CheckedTextView[@text='Logout']").click();
     }
 
     public void confirmLogout() {
-        System.out.println("Confirm Logout");
+        LOGGER.info("Confirm Logout");
         Client.driver.findElementByXPath("//android.widget.Button[@text='LOGOUT']").click();
     }
-
-
 
 
 }
