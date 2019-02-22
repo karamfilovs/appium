@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,8 @@ public class LoginTest extends BaseTest {
         app.homePage().loaded();
         app.homePage().clickHamburgerIcon();
         app.homePage().logout();
+        app.homePage().confirmLogout();
+        Assertions.assertTrue(app.loginPage().loginIsDisplayed(), "Login button is not displayed");
     }
 
 

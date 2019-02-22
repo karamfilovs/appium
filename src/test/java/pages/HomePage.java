@@ -31,6 +31,12 @@ public class HomePage extends BasePage {
         Client.driver.findElementByXPath("//android.widget.CheckedTextView[@text='Logout']").click();
     }
 
+    public void confirmLogout() {
+        System.out.println("Confirm Logout");
+        Client.driver.findElementByXPath("//android.widget.Button[@text='LOGOUT']").click();
+    }
+
+
 
 
 }

@@ -41,6 +41,10 @@ public class LoginPage extends BasePage {
         Client.driver.findElementByXPath("//android.widget.Button[@text='Login']").click();
     }
 
+    public boolean loginIsDisplayed(){
+        return Client.driver.findElementByXPath("//android.widget.Button[@text='Login']").isDisplayed();
+    }
+
     public void clickRegisterButton() {
         LOGGER.info("Clicking Register button");
         Client.driver.findElementByXPath("//android.widget.Button[@text='Register']").click();
